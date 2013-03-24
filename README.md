@@ -1,3 +1,23 @@
+CHANGES OF THIS FORK
+--------------------
+
+This is a fork of autojump preferring absolute paths when adding paths via the "-a" option,
+so executing "autojump -a projects" e.g. in your home directory will add "/home/user/projects" to
+the database (if the path exists).
+I used this to import my whole bash history to build an initial database with paths I use:
+```
+history | perl -lne 'print $1 if /\s*\d+\s+cd\s+(.*)/' | xargs -n 1 -i autojump -a "{}"
+```
+This command filters the history for "cd" commands and adds the used paths one by one to the
+database (might take a while, my >100k lines history took more than 10 minutes).
+
+List of changes compared to the original project:
+
+[try to use absolute paths when manually adding](https://github.com/svent/autojump/commit/fe4a6622b2f57a7c4c7e1a1e12094ff3deef9aef)
+
+----
+
+
 NAME
 ----
 
